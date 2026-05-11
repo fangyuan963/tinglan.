@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/api/interpret"
+  to = "/.netlify/functions/interpret"
+  status = 200
+  force = true
