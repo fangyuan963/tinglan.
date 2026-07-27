@@ -15,18 +15,14 @@
 - [Features](#features)
 - [Architecture](#architecture)
 - [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
   - [Environment Variables](#environment-variables)
   - [Running Locally](#running-locally)
 - [Deployment](#deployment)
 - [Prompt Design](#prompt-design)
 - [Evaluation](#evaluation)
 - [Tech Stack](#tech-stack)
-- [Roadmap](#roadmap)
 - [Contributing](#contributing)
-- [License](#license)
+
 
 ---
 
@@ -43,7 +39,7 @@
 ```
 ┌──────────┐     ┌─────────────┐     ┌──────────────┐     ┌───────────────┐
 │  Frontend │ --> │  AI Gateway │ --> │ Prompt组装层  │ --> │  LLM Provider  │
-│ (抽卡/UI) │     │ (模型调度)   │     │ (业务逻辑)    │     │ (Claude/Gemini)│
+│ (抽卡/UI) │     │ (模型调度)   │     │ (业务逻辑)   │     │ (ChatGPT/deepseek)│
 └──────────┘     └─────────────┘     └──────────────┘     └───────────────┘
                                               │
                                               ▼
@@ -66,33 +62,13 @@
 └── netlify.toml             # Netlify部署配置
 ```
 
-## Getting Started
-
-### Prerequisites
-
-- Node.js >= 18
-- npm 或 yarn
-- Netlify CLI（本地调试 serverless functions）
-
-```bash
-npm install -g netlify-cli
-```
-
-### Installation
-
-```bash
-git clone https://github.com/<your-username>/tinglan.git
-cd tinglan
-npm install
-```
 
 ### Environment Variables
 
 在项目根目录创建 `.env`：
 
 ```env
-ANTHROPIC_API_KEY=your_key_here
-GEMINI_API_KEY=your_key_here
+DEEPSEEK_API_KEY=your_key_here
 ```
 
 > 请勿将 `.env` 提交到仓库，已在 `.gitignore` 中排除。
@@ -141,22 +117,15 @@ netlify deploy --prod
 |---|---|
 | 前端 | HTML / CSS / JavaScript |
 | 后端 | Netlify Functions (Serverless) |
-| 模型 | Claude, Gemini |
+| 模型 | ChatGPT/deepseek |
 | 部署 | Netlify |
 | 原型设计 | Figma |
-| 开发工具 | Cursor |
 
-## Roadmap
 
-- [ ] 扩充评测case库
-- [ ] Bad Case分级修复机制自动化
-- [ ] 多语言支持
-- [ ] 用户反馈闭环
+
 
 ## Contributing
 
 本项目当前为个人独立维护。如有建议或Bug反馈，欢迎提Issue。
 
-## License
 
-[MIT](LICENSE) © 2026 王XX
