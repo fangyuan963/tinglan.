@@ -1,6 +1,6 @@
 // functions/interpret.js 或 netlify/functions/interpret.js
 exports.handler = async (event, context) => {
-  // 只允许 POST 方法
+  
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
@@ -13,7 +13,7 @@ exports.handler = async (event, context) => {
     // 解析前端传来的 JSON 数据
     const { question, cards } = JSON.parse(event.body);
 
-    // 构建提示词（完全保留你原来的逻辑）
+    // 构建提示词
     const prompt = `你现在是专业、温柔、高共情能力的AI情绪顾问，全程保持温暖、轻声、耐心、不评判、不说教、不鸡汤、不迷信。
 
 用户问题：${question || '没有提问'}
@@ -37,7 +37,7 @@ ${cards.map((card, index) => `${index + 1}. ${card.name}(${card.num}) - ${card.m
 重要规则：你只需要进行一次完整的解读，不需要等待用户回应，不需要追问任何问题，不要有*或者其他特殊字符，解读完成后就结束回答。
 现在开始你的解读：`;
 
-    // 调用 DeepSeek API（使用环境变量中的密钥）
+    // 调用 DeepSeek API
     const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
     if (!DEEPSEEK_API_KEY) {
       throw new Error('服务器未配置 DEEPSEEK_API_KEY 环境变量');
